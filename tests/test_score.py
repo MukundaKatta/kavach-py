@@ -34,11 +34,13 @@ def test_score_accepts_iterable_of_ids():
 
 
 def test_score_dict_skips_falsy_signals():
-    r = score({
-        "promptInjection": True,
-        "toolMisuse": False,  # not fired
-        "credentialLeak": 0,  # not fired
-    })
+    r = score(
+        {
+            "promptInjection": True,
+            "toolMisuse": False,  # not fired
+            "credentialLeak": 0,  # not fired
+        }
+    )
     assert r.score == 0.35
     assert "Unusual tool / API call pattern" not in r.contributors
 
@@ -108,7 +110,10 @@ def test_score_high_severity_yields_high_action():
 
 def test_threat_score_returns_dict_for_parity():
     raw = threat_score(["promptInjection"])
-    assert raw == {"score": 0.35, "contributors": ["Prompt-injection language detected"]}
+    assert raw == {
+        "score": 0.35,
+        "contributors": ["Prompt-injection language detected"],
+    }
 
 
 def test_triage_alias_returns_threat_score():

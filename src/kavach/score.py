@@ -26,7 +26,11 @@ THREAT_MODELS: Mapping[str, Mapping[str, list]] = types.MappingProxyType(
     {
         "promptAbuse": {
             "surfaces": ["chat input", "tool arguments", "system prompts"],
-            "controls": ["prompt injection detection", "tool scoping", "response review"],
+            "controls": [
+                "prompt injection detection",
+                "tool scoping",
+                "response review",
+            ],
         },
         "dataExfiltration": {
             "surfaces": ["model output", "file export", "network egress"],
